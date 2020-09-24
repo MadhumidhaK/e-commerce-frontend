@@ -1,0 +1,16 @@
+export const LOGGED_IN = "LOGGED_IN";
+export const LOGGED_OUT = "LOGGED_OUT";
+export const SET_CART = "SET_CART";
+export const CLEAR_CART = "CLEAR_CART";
+export const ADD_PRODUCT = "ADD_PRODUCT";
+export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+export const UPDATE_IMAGE = "UPDATE_IMAGE";
+export const SET_ORDER = "SET_ORDER";
+export const CLEAR_ORDER = "CLEAR_ORDER";
+export const OPEN_ALERT = "OPEN_ALERT";
+export const CLOSE_ALERT = "CLOSE_ALERT";
+export const SET_USER_DATA = "SET_USER_DATA";
+export const CLEAR_USER_DATA = "CLEAR_USER_DATA"; 
+export const OPEN_TOASTER = "OPEN_TOASTER";
+export const CLOSE_TOASTER = "CLOSE_TOASTER";
+export const SET_CATEGORIES = "SET_CATEGORIES";

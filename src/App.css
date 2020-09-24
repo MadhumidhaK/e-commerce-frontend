@@ -36,3 +36,158 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.message-style{
+  margin: auto;
+  max-width: 60%;
+  margin-top: 2rem;
+}
+
+.mt-1{
+  margin-top: 1rem;
+}
+
+.btn-green{
+  color:white;
+  background-color: green;
+}
+
+.m-2 {
+  margin: .5rem!important;
+}
+
+.text-dark {
+  color: #343a40!important;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+.display-block {
+  display: block!important;
+}
+
+.small, small {
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.text-blue {
+  color: #007bff!important;
+}
+
+.card-style{
+  margin: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* min-width: 200px; */
+  /* width: 350px!important; */
+  display: inline-block;
+  width: 300px;
+  height: 450px!important
+}
+
+.justify-content-center{
+  display: flex;
+  justify-content: center;
+}
+
+.card-media{
+  margin: auto;
+  background-size: contain!important;
+  min-height: 300px!important;
+}
+
+.w-100{
+  width: 100%;
+}
+
+.ml-auto{
+  margin-left: auto!important;
+}
+
+.align-items-end{
+  align-items: flex-end!important;
+}
+.align-items-center{
+  align-items: center!important;
+}
+
+.flex-wrap{
+  flex-wrap: wrap;
+}
+
+.m-0{
+  margin: 0!important;
+}
+.p-0{
+  padding: 0!important;
+}
+
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-space-around{
+  justify-content: space-around;
+}
+.main{
+  min-height: calc(100vh - 15rem);
+}
+
+.mb-1rem{
+  margin-bottom: 1rem;
+}
+.m-1rem{
+  margin: 1rem!important;
+}
+.position-absolute{
+  position: absolute;
+}
+
+.position-relative{
+  position: relative;
+}
+.mx-auto{
+  margin: auto;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+}
+
+.justify-space-between{
+  display: flex;
+  justify-content: space-between;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.product{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+a,
+a:hover {
+    text-decoration: none!important;
+}
+
+.float-right{
+  float: right;
+}
+
+@media (min-width: 770px){
+  .product{
+    flex-wrap: nowrap;
+  }
+}

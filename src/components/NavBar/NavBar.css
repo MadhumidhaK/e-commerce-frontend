@@ -1,0 +1,35 @@
+a,
+a:hover {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+a:hover{
+    color: white;
+}
+
+.mt-1{
+    margin-top: 1rem;
+}
+
+.menu-links,
+.menu-links:hover {
+    color: black
+}
+
+.nav-bar__link{
+    margin-right: 1.5rem;
+}
+
+.category-nav__link.active{
+    color: black
+}
+
+
+.category-nav__link:hover{
+    color: rgb(105, 88, 88)
+}
+
+.mt-4{
+    margin-top: 4rem;
+}

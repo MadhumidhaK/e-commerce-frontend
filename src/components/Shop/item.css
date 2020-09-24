@@ -1,0 +1,54 @@
+.backdrop {
+   z-index: 100;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: black;
+    opacity: 0.5;
+    position: absolute;
+    animation-name: bg-backdrop;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.progress{
+    z-index: 101;
+    left: 40%;
+    top:10%
+}
+
+
+@keyframes bg-backdrop{
+    from {background-color: black;}
+    to {background-color: grey;}
+}
+
+@-moz-keyframes bg-backdrop{
+    from {background-color: black;}
+    to {background-color: grey;}
+}
+
+@-webkit-keyframes bg-bacdkrop{
+    from {background-color: black;}
+    to {background-color: grey;}
+}
+
+
+.bg-contain{
+    background-size: contain!important;
+}
+
+.mt-8px{
+    margin-top: 8px;
+}
+
+.remove-icon{
+    cursor: pointer!important;
+    color: #e88f8f!important;
+    margin-right: 1rem!important;
+}
+
+.remove-icon:hover{
+    color: #d12222!important;
+}

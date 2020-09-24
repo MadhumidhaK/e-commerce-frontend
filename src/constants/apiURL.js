@@ -1,0 +1,1 @@
+exports.url = "https://shop-happy.herokuapp.com/api";
