@@ -11,7 +11,7 @@ import useDark from "../../styles/useDark";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import { Badge, Drawer, Menu, MenuItem, Tooltip } from '@material-ui/core';
-import { LOGGED_OUT } from '../../constants/actions';
+import { CLEAR_CART, CLEAR_ORDER, CLEAR_USER_DATA, LOGGED_OUT } from '../../constants/actions';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
@@ -61,6 +61,22 @@ useEffect(() => {
   const handleProfileClose = () => {
     setAnchorEl(null);
   };
+
+  const logout = () => {
+    window.localStorage.removeItem('happy-shop');
+    dispatch({
+        type: LOGGED_OUT
+    });
+    dispatch({
+        type: CLEAR_USER_DATA
+    })
+    dispatch({
+        type: CLEAR_CART
+    })
+    dispatch({
+        type: CLEAR_ORDER
+    })
+  }
   const [state, setState] = useState(false);
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -120,10 +136,7 @@ if(isMobile){
                        <p>Orders</p>
             </NavLink>
             <p  onClick={() => {
-                    window.localStorage.removeItem('happy-shop');
-                    dispatch({
-                        type: LOGGED_OUT
-                    })
+                    logout()
                     handleProfileClose()
                 }} className="m-0 p-0 cursor-pointer">
                 Logout
@@ -176,7 +189,8 @@ if(isMobile){
             
             <AccountCircleIcon className="cursor-pointer" aria-controls="profile" aria-haspopup="true" onClick={handleProfileClick} />
             <Menu
-                id="profile"
+                className="menu"
+                id="profile-menu"
                 getContentAnchorEl={null}
                 anchorOrigin={{
                     vertical: 'bottom',
@@ -192,17 +206,14 @@ if(isMobile){
                 open={Boolean(anchorEl)}
                 onClose={handleProfileClose}
             >
-                <MenuItem onClick={handleProfileClose} ><Link to="/user" className="menu-links">Profile</Link></MenuItem>
-                <MenuItem onClick={handleProfileClose} ><Link to="/orders" className="menu-links">Orders</Link></MenuItem>
+                <MenuItem onClick={handleProfileClose} ><Link to="/user">Profile</Link></MenuItem>
+                <MenuItem onClick={handleProfileClose} ><Link to="/orders" >Orders</Link></MenuItem>
                 {user.isSeller &&  
                 <MenuItem onClick={handleProfileClose}>
-                    <Link to="/add-product"  className="menu-links">Add Product</Link>
+                    <Link to="/add-product">Add Product</Link>
                 </MenuItem>}
                 <MenuItem onClick={() => {
-                    window.localStorage.removeItem('happy-shop');
-                    dispatch({
-                        type: LOGGED_OUT
-                    })
+                   logout();
                     handleProfileClose()
                 }}>Logout</MenuItem>
             </Menu>

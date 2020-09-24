@@ -12,11 +12,6 @@ a:hover{
     margin-top: 1rem;
 }
 
-.menu-links,
-.menu-links:hover {
-    color: black
-}
-
 .nav-bar__link{
     margin-right: 1.5rem;
 }
@@ -28,6 +23,11 @@ a:hover{
 
 .category-nav__link:hover{
     color: rgb(105, 88, 88)
+}
+
+.menu ul{
+    background: dimgrey;
+    color: white!important;
 }
 
 .mt-4{
