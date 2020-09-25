@@ -81,50 +81,51 @@ const Products = function (){
     )
     }
 
-    if(filterBy !== 'brand' || filterBy !== 'category'){
-        return <Redirect to="/404" />
-    }
-
-    if(isLoading){
+    if(filterBy === 'brand' || filterBy === 'category'){
+       
+        if(isLoading){
+            return (
+            <>
+            <CircularProgress />
+            <div className="main"></div>
+            <Pagination className="justify-content-center mb-1rem" count={pagesCount} page={parseInt(currentPage)} color="primary" onChange={handleChange} />
+            </>)
+        }
+        if(currentPage > pagesCount){
+            history.push('?page='+ (pagesCount))
+        }
+        if(parseInt(currentPage) === 0){
+            history.push('?page=1')
+        }
         return (
-        <>
-        <CircularProgress />
-        <div className="main"></div>
-        <Pagination className="justify-content-center mb-1rem" count={pagesCount} page={parseInt(currentPage)} color="primary" onChange={handleChange} />
-        </>)
-    }
-    if(currentPage > pagesCount){
-        history.push('?page='+ (pagesCount))
-    }
-    if(parseInt(currentPage) === 0){
-        history.push('?page=1')
-    }
-    return (
-        <div style={{position: "relative"}}>
-                {filterBy === 'brand' && user.isSeller && user.brand === name ?
-                <Box>
-                    <div style={{position: "fixed", zIndex: "50", marginLeft: "calc(100vw - 80px)"}}>
-                        <Link to="/add-product" className="float-right">
-                            <Tooltip title="Add Product">
-                                <div className={classes.addIcon}>
-                                    <AddIcon />
-                                </div>
-                            </Tooltip>
-                        </Link>
-                    </div>
-                </Box> : ""}
-            
-            <Box flexDirection="row" flexWrap="wrap">
-                    {products.length < 1 ?  <CircularProgress />  :   products.map((product, index) => {
-                        return (
-                            <Product key={index} product={product} filterBy={filterBy} name={name} />
-                        )
-                    })}
-            </Box>
+            <div style={{position: "relative"}}>
+                    {filterBy === 'brand' && user.isSeller && user.brand === name ?
+                    <Box>
+                        <div style={{position: "fixed", zIndex: "50", marginLeft: "calc(100vw - 80px)"}}>
+                            <Link to="/add-product" className="float-right">
+                                <Tooltip title="Add Product">
+                                    <div className={classes.addIcon}>
+                                        <AddIcon />
+                                    </div>
+                                </Tooltip>
+                            </Link>
+                        </div>
+                    </Box> : ""}
+                
+                <Box flexDirection="row" flexWrap="wrap">
+                        {products.length < 1 ?  <CircularProgress />  :   products.map((product, index) => {
+                            return (
+                                <Product key={index} product={product} filterBy={filterBy} name={name} />
+                            )
+                        })}
+                </Box>
 
-            <Pagination className="justify-content-center  mb-1rem" count={pagesCount} color="primary" page={parseInt(currentPage)} onChange={handleChange} />
-        </div>
-    )
+                <Pagination className="justify-content-center  mb-1rem" count={pagesCount} color="primary" page={parseInt(currentPage)} onChange={handleChange} />
+            </div>
+        )
+    }
+    return <Redirect to="/404" />
+
 }
 
 export default Products;
