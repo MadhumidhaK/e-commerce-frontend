@@ -69,7 +69,7 @@ const Buy = () => {
                         {orderCompleted ?    (  
                             <Alert severity="success" className="m-1rem">
                                     <AlertTitle>Payment Completed!</AlertTitle>
-                                    Your order is confirmed. Your Tracking Number :<strong>{order._id}</strong>
+                                    Your order is confirmed. Your Order Number :<strong>{order._id}</strong>
                             </Alert>) 
                         :
                          <Button onClick={displayRazorPay} className={orderBtn}>Make Payment</Button>}

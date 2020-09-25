@@ -13,7 +13,8 @@ const useStyles = makeStyles({
         width: "360px",
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        minWidth: "360px"
+        minWidth: "360px",
+        backgroundPosition: "center"
     },
     desc:{
         color: "grey",
