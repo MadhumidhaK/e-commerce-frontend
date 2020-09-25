@@ -155,7 +155,7 @@ if(error){
                     if(isEditing){
                         return handleSubmit(e, url + "/product/update/" + id, {
                             "Authorization": auth.authKey
-                        }, "PATCH")
+                        }, "PUT")
                     }
                     return handleSubmit(e, url + "/product/add", {
                         "Authorization": auth.authKey

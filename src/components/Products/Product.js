@@ -84,7 +84,7 @@ const Product = ({filterBy, name, ...others}) =>{
                 setIsLoading(false)
             }, (response) => {
                 console.log(response)
-            }, "PATCH" ,true )
+            }, "PUT" ,true )
         }
     }
 
@@ -108,7 +108,7 @@ const Product = ({filterBy, name, ...others}) =>{
                                     <Link to={"/product/" + product._id}>
                                         <CardMedia
                                         className={classes.media + " card-media"}
-                                        image={url + "/" + product.productImage.replace("\\", "/")}
+                                        image={product.productImage}
                                         title={product.name}
                                         />
                                         <CardContent>
