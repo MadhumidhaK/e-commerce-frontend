@@ -20,7 +20,6 @@ const ResetPassword = () => {
     const {token} = useParams();
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
-    console.log(auth)
 
     const initialValues = {
       email: "",
@@ -29,7 +28,6 @@ const ResetPassword = () => {
     }
 
     const successCB = (response) => {
-      console.log(response);
       dispatch({
         type: SET_USER_DATA,
         payload: {

@@ -10,15 +10,11 @@ const fetchData = async (url, options, successCB, errorCB) => {
       });
       responseStatusCode = res.status;
       const json = await res.json();
-      console.log(json);
       if(res.status === 200 || res.isLoggedIn){
-        console.log("success")
         successCB(json);
         response = json;
         return;
       }
-      console.log(errorCB)
-      console.log("error")
       errorCB(json);
       return;
     } catch (error) {

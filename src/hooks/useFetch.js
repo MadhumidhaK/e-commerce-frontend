@@ -13,15 +13,11 @@ export const useFetch = (url, options, successCB, errorCB) => {
           setResponseStatusCode(res.status);
           const json = await res.json();
           setIsLoading(false);
-          console.log(json);
           if(res.status === 200 || res.isLoggedIn){
-            console.log("success")
             successCB(json);
             setResponse(json);
             return;
           }
-          console.log(errorCB)
-          console.log("error")
           errorCB(json);
           setError(json);
           return;

@@ -113,8 +113,6 @@ export default function ProductForm() {
                         useForm(initialValues, validate, successCB);
 
     useEffect(() => {
-                console.log("location.pathname")
-                console.log(location.pathname)
                 if(location.pathname === "/edit-product/" + id){
                         setIsEditing(true);
                         setIsProductLoading(true);
@@ -162,112 +160,107 @@ if(error){
                     }, "POST", true)
                 }}>
                 <Box display="flex" flexDirection="column" alignItems="center" className={classes.root + " w-100"}>
-                <Box display="flex" flexDirection="row" alignItems="center" flexWrap="wrap" className="w-100">
-                    {!isEditing && <Box className="image-container">
-                    {values.productImage ? 
-                    <img src={image} className="product-image" alt="image"></img> : <div style={{ height: '100px'}}></div>}
-                        <input
-                        accept="image/*"
-                        onChange={(e) => {
-                            if(e.target.files[0]){
-                                handleChange(e);
-                                setImage(URL.createObjectURL(e.target.files[0]))
-                            }
-                        }}
-                        name="productImage"
-                        style={{ display: 'none' }}
-                        id="productImage"
-                        type="file"
-                        />
-                        <label htmlFor="productImage">
-                        <Button variant="contained" component="span" className={classes.button}>
-                            <small>Product Image</small>
-                        </Button>
-                        </label> 
-                    </Box>}
-                    <Box display="flex" flexDirection="column" alignItems="center"  className="form">
-                    <TextField 
-                        label="Name" 
-                        multiline       
-                        name={"name"}
-                        id={"name"}
-                        value={values.name}
-                        onChange={handleChange}
-                        error={!!errors.name}
-                        helperText={errors.name}
-                    />  
-                  <FormControl style={{width: '90%'}} error={!!errors.category}>
-                        <InputLabel id="categoryLabel">Category</InputLabel>
-                        <Select
-                        labelId="categoryLabel"
-                        id="category"
-                        name="category"
-                        onChange={handleChange}
-                        value={values.category}
-                        >
-                        <MenuItem>
-                            <em>None</em>
-                        </MenuItem>
-                        {categories.map((category, index) => {
-                            return <MenuItem key={index} value={category._id}>
-                                    {category.title}
-                            </MenuItem>
-                        })}
-                        </Select>
-                    {!!errors.category && <FormHelperText >{errors.category}</FormHelperText>}
-                    </FormControl>
-                    <TextField
-                        id="description"
-                        label="Description"
-                        name="description"
-                        multiline
-                        // rows={4}
-                        value={values.description}
-                        // variant="filled"
-                        onChange={handleChange}
-                        error={!!errors.description}
-                        helperText={errors.description}
-                        />
+                    <Box display="flex" flexDirection="row" alignItems="center" flexWrap="wrap" className="w-100">
+                        {!isEditing && <Box className="image-container">
+                        {values.productImage ? 
+                        <img src={image} className="product-image" alt="image"></img> : <div style={{ height: '100px'}}></div>}
+                            <input
+                            accept="image/*"
+                            onChange={(e) => {
+                                if(e.target.files[0]){
+                                    handleChange(e);
+                                    setImage(URL.createObjectURL(e.target.files[0]))
+                                }
+                            }}
+                            name="productImage"
+                            style={{ display: 'none' }}
+                            id="productImage"
+                            type="file"
+                            />
+                            <label htmlFor="productImage">
+                            <Button variant="contained" component="span" className={classes.button}>
+                                <small>Product Image</small>
+                            </Button>
+                            </label> 
+                        </Box>}
+                        <Box display="flex" flexDirection="column" alignItems="center"  className="form">
+                            <TextField 
+                                label="Name" 
+                                multiline       
+                                name={"name"}
+                                id={"name"}
+                                value={values.name}
+                                onChange={handleChange}
+                                error={!!errors.name}
+                                helperText={errors.name}
+                            />  
+                            <FormControl style={{width: '90%'}} error={!!errors.category}>
+                                <InputLabel id="categoryLabel">Category</InputLabel>
+                                <Select
+                                labelId="categoryLabel"
+                                id="category"
+                                name="category"
+                                onChange={handleChange}
+                                value={values.category}
+                                >
+                                <MenuItem>
+                                    <em>None</em>
+                                </MenuItem>
+                                {categories.map((category, index) => {
+                                    return <MenuItem key={index} value={category._id}>
+                                            {category.title}
+                                    </MenuItem>
+                                })}
+                                </Select>
+                            {!!errors.category && <FormHelperText >{errors.category}</FormHelperText>}
+                            </FormControl>
+                            <TextField
+                                id="description"
+                                label="Description"
+                                name="description"
+                                multiline
+                                // rows={4}
+                                value={values.description}
+                                // variant="filled"
+                                onChange={handleChange}
+                                error={!!errors.description}
+                                helperText={errors.description}
+                                />
+                            <Box display="flex" flexDirection="row" alignItems="center" style={{width: "90%"}}>
+                                <TextField 
+                                    style={{width: "50%", marginLeft: 0}}
+                                    type="number"
+                                    label="Available Quantity" 
+                                    name={"availableQuantity"}
+                                    id={"availableQuantity"}
+                                    value={values.availableQuantity}
+                                    onChange={handleChange}
+                                    error={!!errors.availableQuantity}
+                                    helperText={errors.availableQuantity}
+                                    />
+                                <FormControl style={{width: "50%"}}  error={!!errors.price} >
+                                    <InputLabel htmlFor="price">Price</InputLabel>
 
-                    <Box display="flex" flexDirection="row" alignItems="center" style={{width: "90%"}}>
-                   <TextField 
-                        style={{width: "50%", marginLeft: 0}}
-                        type="number"
-                        label="Available Quantity" 
-                        name={"availableQuantity"}
-                        id={"availableQuantity"}
-                        value={values.availableQuantity}
-                        onChange={handleChange}
-                        error={!!errors.availableQuantity}
-                        helperText={errors.availableQuantity}
-                    />
-                    <FormControl style={{width: "50%"}}  error={!!errors.price} >
-                    <InputLabel htmlFor="price">Price</InputLabel>
-
-                    <Input 
-                        type="number"
-                        label="Price" 
-                        name={"price"}
-                        id={"price"}
-                        value={values.price}
-                        onChange={handleChange}
-                        startAdornment={<InputAdornment position="start">₹</InputAdornment>}
-                    />
-                    {!!errors.price && <FormHelperText >{errors.price}</FormHelperText>}
-                    </FormControl>
-                   </Box>
-                    
-                    
+                                    <Input 
+                                        type="number"
+                                        label="Price" 
+                                        name={"price"}
+                                        id={"price"}
+                                        value={values.price}
+                                        onChange={handleChange}
+                                        startAdornment={<InputAdornment position="start">₹</InputAdornment>}
+                                    />
+                                {!!errors.price && <FormHelperText >{errors.price}</FormHelperText>}
+                                </FormControl>
+                            </Box>
+                        </Box>
                     </Box>
-                    </Box>
-                     
-                    
                     { isLoading ?  <CircularProgress /> :<Button type="submit" className="mt-1" variant="contained" color="primary">
                         Update
                     </Button> }
-                    </Box>
-                </form>
-                </Grid>
-      </Grid>
+                </Box>
+            </form>
+        </Grid>
+    </Grid>
   );
 }

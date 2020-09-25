@@ -78,25 +78,25 @@ export default function CategoriesNav() {
 
   if(isMobile){
     return (
-      <div className={classes.root}>
+    <div className={classes.root}>
       <div position="static" className={classes.bgGrey + " cursor-pointer"} style={{borderRadius: "0 0 3px 3px"}} onClick={handleExpandClick}>
-      <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon className="p-0 m-0"/>
-      </IconButton>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <div className={classes.mobNav}>
-        
-          {categories.map((category, index) => {
-            return <NavLink to={"/category/" + category.name} className="category-nav__link" key={index}>{category.title}</NavLink>
-          })}
-        </div>
+        <IconButton
+            className={clsx(classes.expand, {
+              [classes.expandOpen]: expanded,
+            })}
+            onClick={handleExpandClick}
+            aria-expanded={expanded}
+            aria-label="show more"
+          >
+            <ExpandMoreIcon className="p-0 m-0"/>
+        </IconButton>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <div className={classes.mobNav}>
+          
+            {categories.map((category, index) => {
+              return <NavLink to={"/category/" + category.name} className="category-nav__link" key={index}>{category.title}</NavLink>
+            })}
+          </div>
         </Collapse>
       </div>
     </div>

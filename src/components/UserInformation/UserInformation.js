@@ -121,12 +121,12 @@ export default function UserInformation() {
                         error={!!errors.brandName}
                         helperText={errors.brandName}
                     />}
-                    { isLoading ?  <CircularProgress /> :<Button type="submit" variant="contained" color="primary">
-                        Update
-                    </Button> }
+                        { isLoading ?  <CircularProgress /> :<Button type="submit" variant="contained" color="primary">
+                                Update
+                        </Button> }
                     </Box>
                 </form>
-                </Grid>
+            </Grid>
       </Grid>
   );
 }

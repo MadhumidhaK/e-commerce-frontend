@@ -152,8 +152,8 @@ const Signup = () => {
             Already have an account? Login <span className="text-blue small-link">here</span>. 
             </small>
         </Link>
-        </Grid>
-        </Grid>
+      </Grid>
+    </Grid>
     )
 }
 

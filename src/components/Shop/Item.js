@@ -89,53 +89,53 @@ const Item = ({item}) => {
     return (
         <Card className={classes.root + " cart-item"}>
             {isLoading && <div className="backdrop"></div>}
-                            <CardActionArea className="w-150px">
-                                <Link to={"/product/" + item.product._id}>
-                                    <CardMedia
-                                    className={classes.media + " cart-image bg-contain"}
-                                    image={url + "/" + item.product.productImage.replace("\\", "/")}
-                                    title={item.product.name}
-                                    />
-                                </Link>
-                            </CardActionArea>
-                            <CardActions className="flex-column justify-space-around align-items-end">
-                                <h5 className="m-0">{item.product.name.substring(0, 35) + (item.product.name.length > 35 ? "..." : "")}</h5>
-                                <small className="textSecondary">Seller: <span>{item.product.brand ? item.product.brand : item.product.seller.brandName}</span></small>
-                                <h5 className={classes.price + " m-0"}>₹ {item.product.price}</h5>
-                                
-                                {location.pathname === '/cart' ?  (<div className="flex-row align-items-center">
-                                            <DeleteIcon className="m-0 p-0 cart-button remove-icon" onClick={() => {
-                                                setIsLoading(true);
-                                               return removeItem(item.product._id);
-                                            }}/>
-                                    <FormControl variant="outlined" className={classes.qty + " mt-8px"}>
-                                            <InputLabel>Quantity</InputLabel>
-                                            <Select
-                                            className={classes.qty}
-                                            native
-                                            value={item.quantity}
-                                            onChange={(e) => {
-                                                setIsLoading(true);
-                                                setItemQuantity(item.product._id, e.target.value)
-                                            }}
-                                            label="Quantity"
-                                            >
-                                            <option value={1}>One</option>
-                                            <option value={2}>Two</option>
-                                            <option value={3}>Three</option>
-                                            <option value={4}>Four</option>
-                                            <option value={5}>Five</option>
-                                            <option value={6}>Six</option>
-                                            <option value={7}>Seven</option>
-                                            <option value={8}>Eight</option>
-                                            <option value={9}>Nine</option>
-                                            <option value={10}>Ten</option>
-                                            </Select>
-                                        </FormControl>
-                                </div>) : <p>Quantity : { item.quantity }</p>}
+            <CardActionArea className="w-150px">
+                <Link to={"/product/" + item.product._id}>
+                    <CardMedia
+                    className={classes.media + " cart-image bg-contain"}
+                    image={item.product.productImage}
+                    title={item.product.name}
+                    />
+                </Link>
+            </CardActionArea>
+            <CardActions className="flex-column justify-space-around align-items-end">
+                <h5 className="m-0">{item.product.name.substring(0, 35) + (item.product.name.length > 35 ? "..." : "")}</h5>
+                <small className="textSecondary">Seller: <span>{item.product.brand ? item.product.brand : item.product.seller.brandName}</span></small>
+                <h5 className={classes.price + " m-0"}>₹ {item.product.price}</h5>
+                
+                {location.pathname === '/cart' ?  (<div className="flex-row align-items-center">
+                            <DeleteIcon className="m-0 p-0 cart-button remove-icon" onClick={() => {
+                                setIsLoading(true);
+                                return removeItem(item.product._id);
+                            }}/>
+                    <FormControl variant="outlined" className={classes.qty + " mt-8px"}>
+                            <InputLabel>Quantity</InputLabel>
+                            <Select
+                            className={classes.qty}
+                            native
+                            value={item.quantity}
+                            onChange={(e) => {
+                                setIsLoading(true);
+                                setItemQuantity(item.product._id, e.target.value)
+                            }}
+                            label="Quantity"
+                            >
+                            <option value={1}>1</option>
+                            <option value={2}>1</option>
+                            <option value={3}>3</option>
+                            <option value={4}>4</option>
+                            <option value={5}>5</option>
+                            <option value={6}>6</option>
+                            <option value={7}>7</option>
+                            <option value={8}>8</option>
+                            <option value={9}>9</option>
+                            <option value={10}>10</option>
+                            </Select>
+                        </FormControl>
+                </div>) : <p>Quantity : { item.quantity }</p>}
 
-                            </CardActions>
-                        </Card> 
+            </CardActions>
+        </Card> 
     )
 }
 

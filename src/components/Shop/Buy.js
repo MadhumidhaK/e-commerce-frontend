@@ -25,7 +25,6 @@ const Buy = () => {
     const order = useSelector(state => state.order);
     const {orderBtn} = useButtonStyles();
     const [orderCompleted, setOrderCompleted] = useState(false);
-    console.log(order)
     async function displayRazorPay(){
         const isScriptLoaded = await  loadScript("https://checkout.razorpay.com/v1/checkout.js");
         if(!isScriptLoaded){
@@ -40,7 +39,6 @@ const Buy = () => {
             image: "https://image.freepik.com/free-vector/happy-shop-logo-template_57516-57.jpg",
             order_id: order.orderID, 
             handler: function (response){
-                console.log(response)
                 setOrderCompleted(true);
             },
             prefill: {

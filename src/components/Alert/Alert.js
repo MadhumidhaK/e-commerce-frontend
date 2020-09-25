@@ -17,13 +17,6 @@ export default function AlertDialogSlide() {
   const alert = useSelector(state => state.alert);
   const dispatch = useDispatch();
 
-  // const handleClickOpen = () => {
-  //   setAlertState({
-  //       ...alertState,
-  //       open: true
-  //   });
-  // };
-
   const handleClose = () => {
     dispatch({
       type: CLOSE_ALERT
@@ -41,20 +34,20 @@ export default function AlertDialogSlide() {
         aria-describedby="alert-dialog-slide-description"
       >
         <DialogTitle id="alert-dialog-slide-title">{alert.title}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            {alert.alertText}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          { alert.needCancel && <Button onClick={alert.handleCancel ? alert.handleCancel : handleClose} color="primary">
-            {alert.cancelText ? alert.cancelText : "Cancel"}
-          </Button>
-          }
-          <Button onClick={alert.handleOk ? alert.handleOk : handleClose } color="primary">
-          {alert.okText ? alert.okText : "Ok"}
-          </Button>
-        </DialogActions>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-slide-description">
+              {alert.alertText}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            { alert.needCancel && <Button onClick={alert.handleCancel ? alert.handleCancel : handleClose} color="primary">
+              {alert.cancelText ? alert.cancelText : "Cancel"}
+            </Button>
+            }
+            <Button onClick={alert.handleOk ? alert.handleOk : handleClose } color="primary">
+            {alert.okText ? alert.okText : "Ok"}
+            </Button>
+          </DialogActions>
       </Dialog>
     </div>
   );

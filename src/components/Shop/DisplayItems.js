@@ -9,12 +9,11 @@ const DisplayItems = ({ items }) => {
             <Box flexDirection="row" flexWrap="wrap" className="cart-items">    
                 {items.map((item, index) => {
                     const product = item.product
-                    console.log(url + "/" + product.productImage)
                     return (
                         <Item key={index} item={item}/>
                     )
                 })}
-        </Box>
+            </Box>
         )
 }
 

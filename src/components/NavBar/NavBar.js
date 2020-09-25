@@ -88,138 +88,135 @@ useEffect(() => {
 
 if(!auth.isLoggedIn){
     return (
-        <div className={classes.root}>
+    <div className={classes.root}>
         <AppBar position="static" className={darkStyle.bgDark}>
             <Toolbar>
-            <Typography variant="h6" className={classes.title}>
-                <Link to="/">
-                    Happy Shop
-                </Link>
-            </Typography>
-            <div className="ml-auto flex-row align-items-center">
-                <Button color="inherit"><NavLink to="/login">Login</NavLink></Button>
-                <Button color="inherit"><NavLink to="/signup">Sign Up</NavLink></Button>
-            </div>
+                <Typography variant="h6" className={classes.title}>
+                    <Link to="/">
+                        Happy Shop
+                    </Link>
+                </Typography>
+                <div className="ml-auto flex-row align-items-center">
+                    <Button color="inherit"><NavLink to="/login">Login</NavLink></Button>
+                    <Button color="inherit"><NavLink to="/signup">Sign Up</NavLink></Button>
+                </div>
             </Toolbar>
             
         </AppBar>
-        </div>
+    </div>
     );
 }
 
 if(isMobile){
     return (
-        <div className={classes.root}>
+    <div className={classes.root}>
         <AppBar position="static" className={darkStyle.bgDark}>
             <Toolbar>
-             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer("left", true)}>
-                <MenuIcon />
-            </IconButton>
-          <Drawer anchor={"left"} open={state} onClose={toggleDrawer("left", false)}>
-          <div  className={classes.sideNav}>
-          <div onClick={toggleDrawer("left", false)}
-                onKeyDown={toggleDrawer("left", false)}  className="mt-4">
-          {user.isSeller && 
-          <>
-            <NavLink to={"/brand/" + user.brand}>
-                <p>Your Shop</p>
-            </NavLink>
-            <NavLink to="/add-product">
-                <p>Add Product</p>
-            </NavLink>
-            </>
-            }
-            <NavLink to="/user">
-                       <p>Profile</p>
-            </NavLink>
-            <NavLink to="/orders">
-                       <p>Orders</p>
-            </NavLink>
-            <p  onClick={() => {
-                    logout()
-                    handleProfileClose()
-                }} className="m-0 p-0 cursor-pointer">
-                Logout
-            </p>
-           
-            </div>
-          </div>
-          </Drawer>
-            <Typography variant="h6" className={classes.title}>
-                <Link to="/">
-                        Happy Shop
-                </Link>
-            </Typography>
-            <div className="ml-auto flex-row align-items-center">
-                <Tooltip title="Cart">
-                    <Badge badgeContent={cart.items.length} color="secondary" className="nav-bar__link">
-                        <NavLink to="/cart"> <ShoppingCartIcon /></NavLink>
-                    </Badge>
-                </Tooltip>
-            </div>
+                <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={toggleDrawer("left", true)}>
+                    <MenuIcon />
+                </IconButton>
+                <Drawer anchor={"left"} open={state} onClose={toggleDrawer("left", false)}>
+                    <div  className={classes.sideNav}>
+                        <div onClick={toggleDrawer("left", false)}
+                                onKeyDown={toggleDrawer("left", false)}  className="mt-4">
+                            {user.isSeller && 
+                                <>
+                                    <NavLink to={"/brand/" + user.brand}>
+                                        <p>Your Shop</p>
+                                    </NavLink>
+                                    <NavLink to="/add-product">
+                                        <p>Add Product</p>
+                                    </NavLink>
+                                </>
+                                }
+                                <NavLink to="/user">
+                                        <p>Profile</p>
+                                </NavLink>
+                                <NavLink to="/orders">
+                                        <p>Orders</p>
+                                </NavLink>
+                                <p  onClick={() => {
+                                        logout()
+                                        handleProfileClose()
+                                    }} className="m-0 p-0 cursor-pointer">
+                                    Logout
+                                </p>
+                        </div>
+                    </div>
+                </Drawer>
+                <Typography variant="h6" className={classes.title}>
+                    <Link to="/">
+                            Happy Shop
+                    </Link>
+                </Typography>
+                <div className="ml-auto flex-row align-items-center">
+                    <Tooltip title="Cart">
+                        <Badge badgeContent={cart.items.length} color="secondary" className="nav-bar__link">
+                            <NavLink to="/cart"> <ShoppingCartIcon /></NavLink>
+                        </Badge>
+                    </Tooltip>
+                </div>
             </Toolbar>
         </AppBar>
-        </div>
+    </div>
     );
 }
 
     return (
-        <div className={classes.root}>
+    <div className={classes.root}>
         <AppBar position="static" className={darkStyle.bgDark}>
             <Toolbar>
-            {false && <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                <MenuIcon />
-            </IconButton>}
-            <Typography variant="h6" className={classes.title}>
-                <Link to="/">
-                        Happy Shop
-                </Link>
-            </Typography>
-            <div className="ml-auto flex-row align-items-center">
-            <Tooltip title="Cart">
-            <Badge badgeContent={cart.items.length} color="secondary" className="nav-bar__link">
-                <NavLink to="/cart"> <ShoppingCartIcon /></NavLink>
-            </Badge>
-            </Tooltip>
-            {user.isSeller && 
-                      <NavLink to={"/brand/" + user.brand}>
-                       <p className="nav-bar__link">Your Shop</p>
-                    </NavLink>
-            }
+                <Typography variant="h6" className={classes.title}>
+                    <Link to="/">
+                            Happy Shop
+                    </Link>
+                </Typography>
+                <div className="ml-auto flex-row align-items-center">
+                    <Tooltip title="Cart">
+                        <Badge badgeContent={cart.items.length} color="secondary" className="nav-bar__link">
+                            <NavLink to="/cart"> <ShoppingCartIcon /></NavLink>
+                        </Badge>
+                    </Tooltip>
+                    {user.isSeller && 
+                            <NavLink to={"/brand/" + user.brand}>
+                            <p className="nav-bar__link">Your Shop</p>
+                            </NavLink>
+                    }
             
-            <AccountCircleIcon className="cursor-pointer" aria-controls="profile" aria-haspopup="true" onClick={handleProfileClick} />
-            <Menu
-                className="menu"
-                id="profile-menu"
-                getContentAnchorEl={null}
-                anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'right',
-                }}
-                transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center',
-                }}
-                elevation={0}
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleProfileClose}
-            >
-                <MenuItem onClick={handleProfileClose} ><Link to="/user">Profile</Link></MenuItem>
-                <MenuItem onClick={handleProfileClose} ><Link to="/orders" >Orders</Link></MenuItem>
-                {user.isSeller &&  
-                <MenuItem onClick={handleProfileClose}>
-                    <Link to="/add-product">Add Product</Link>
-                </MenuItem>}
-                <MenuItem onClick={() => {
-                   logout();
-                    handleProfileClose()
-                }}>Logout</MenuItem>
-            </Menu>
-            </div>
+                    <AccountCircleIcon className="cursor-pointer" aria-controls="profile" 
+                        aria-haspopup="true" onClick={handleProfileClick} />
+                    <Menu
+                        className="menu"
+                        id="profile-menu"
+                        getContentAnchorEl={null}
+                        anchorOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'right',
+                        }}
+                        transformOrigin={{
+                            vertical: 'top',
+                            horizontal: 'center',
+                        }}
+                        elevation={0}
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleProfileClose}
+                    >
+                        <MenuItem onClick={handleProfileClose} ><Link to="/user">Profile</Link></MenuItem>
+                        <MenuItem onClick={handleProfileClose} ><Link to="/orders" >Orders</Link></MenuItem>
+                        {user.isSeller &&  
+                        <MenuItem onClick={handleProfileClose}>
+                            <Link to="/add-product">Add Product</Link>
+                        </MenuItem>}
+                        <MenuItem onClick={() => {
+                        logout();
+                            handleProfileClose()
+                        }}>Logout</MenuItem>
+                    </Menu>
+                </div>
             </Toolbar>
         </AppBar>
-        </div>
+    </div>
     );
 }

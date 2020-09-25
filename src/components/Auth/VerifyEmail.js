@@ -47,7 +47,6 @@ const VerifyEmail = () => {
       return errors;
   }
     const successCB = (response) => {
-      console.log(response);      
       
       dispatch({
         type: SET_USER_DATA,
@@ -101,7 +100,7 @@ const VerifyEmail = () => {
 
   return (
     <Grid container>
-        <Grid item xs>
+      <Grid item xs>
          <form id="verify-form" className={classes.root}  noValidate autoComplete="off" onSubmit={(e) => {
             handleSubmit(e, url + "/user/verifyemail");
            }}>
@@ -131,8 +130,8 @@ const VerifyEmail = () => {
                 </Button>}
             </Box>
         </form>
-       </Grid>
       </Grid>
+  </Grid>
     )
 }
 

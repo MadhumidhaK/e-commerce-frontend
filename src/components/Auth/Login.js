@@ -22,7 +22,6 @@ const Login = () => {
     const { from } = location.state || { from: { pathname: "/" } };
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
-    console.log(auth)
 
     const initialValues = {
       email: "",
@@ -30,7 +29,6 @@ const Login = () => {
     }
 
     const successCB = (response) => {
-      console.log(response);
       dispatch({
         type: SET_USER_DATA,
         payload: {
@@ -84,43 +82,43 @@ const Login = () => {
   return (
     <Grid container>
         <Grid item xs>
-         <form id="login-form" className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {
-          handleSubmit(e,url + "/user/login");
-      }}>
-            <Box display="flex" flexDirection="column" alignItems="center">
-                {errors.error && <Alert severity="error" className="mt-1">{errors.error}</Alert>}
-                <TextField required 
-                  id="email"  
-                  name="email" 
-                  label="Email" 
-                  value={values.email} 
-                  onChange={handleChange}
-                  error={!!errors.email}
-                  helperText={errors.email}
-                  />
-                <TextField type="password" required  
-                  id="password" 
-                  name="password" 
-                  label="Password" 
-                  value={values.password} 
-                  onChange={handleChange}
-                  error={!!errors.password}
-                  helperText={errors.password}
-                  />
-                {isLoading ?   <CircularProgress />  : 
-                <Button variant="contained" className={buttonStyle.login} type="submit">
-                        Login
-                </Button>}
-            </Box>
-        </form>
-        <Link to="/request/reset"><small className="text-dark text-center small-link display-block m-2">Forgot Password?</small></Link>
-                <Link to="/signup">
-                  <small className="text-dark text-center display-block m-2">
-                  Don't have an account? Create one <span className="text-blue small-link">here</span>. 
-                  </small>
-                </Link>
-        </Grid>
-        </Grid>
+          <form id="login-form" className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {
+            handleSubmit(e,url + "/user/login");
+            }}>
+              <Box display="flex" flexDirection="column" alignItems="center">
+                  {errors.error && <Alert severity="error" className="mt-1">{errors.error}</Alert>}
+                  <TextField required 
+                    id="email"  
+                    name="email" 
+                    label="Email" 
+                    value={values.email} 
+                    onChange={handleChange}
+                    error={!!errors.email}
+                    helperText={errors.email}
+                    />
+                  <TextField type="password" required  
+                    id="password" 
+                    name="password" 
+                    label="Password" 
+                    value={values.password} 
+                    onChange={handleChange}
+                    error={!!errors.password}
+                    helperText={errors.password}
+                    />
+                  {isLoading ?   <CircularProgress />  : 
+                  <Button variant="contained" className={buttonStyle.login} type="submit">
+                          Login
+                  </Button>}
+              </Box>
+          </form>
+          <Link to="/request/reset"><small className="text-dark text-center small-link display-block m-2">Forgot Password?</small></Link>
+          <Link to="/signup">
+            <small className="text-dark text-center display-block m-2">
+            Don't have an account? Create one <span className="text-blue small-link">here</span>. 
+            </small>
+          </Link>
+      </Grid>
+    </Grid>
     )
 }
 

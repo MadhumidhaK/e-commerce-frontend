@@ -38,7 +38,6 @@ const RequestEmailVerification = () => {
 
 
     const cb = (response) => {
-        console.log(response);
         setIsEmailSent({
             isEmailSent: true
         });
@@ -75,31 +74,31 @@ const RequestEmailVerification = () => {
     
 
     return(
-        <Grid container>
-      <Grid item xs>
-        <form id="reset-form" className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {
-            handleSubmit(e, url+"/user" + (action === "verify" ? "/requestverifyemail" : "/forgotpassword"));
-        }}>
-              <Box display="flex" flexDirection="column" alignItems="center">
-                  {errors.error && <Alert severity="error" className="mt-1">{errors.error}</Alert>}
-                  <TextField required 
-                    id="email"  
-                    name="email" 
-                    label="Email" 
-                    value={values.email} 
-                    onChange={handleChange}
-                    error={!!errors.email}
-                    helperText={errors.email}
-                    />
-                 
-                  {isLoading ?   <CircularProgress />  : 
-                  <Button variant="contained" className={buttonStyle.login} type="submit">
-                          Submit
-                  </Button>}
-              </Box>
-          </form>
-          </Grid>
-          </Grid>
+    <Grid container>
+        <Grid item xs>
+            <form id="reset-form" className={classes.root} noValidate autoComplete="off" onSubmit={(e) => {
+                handleSubmit(e, url+"/user" + (action === "verify" ? "/requestverifyemail" : "/forgotpassword"));
+            }}>
+                <Box display="flex" flexDirection="column" alignItems="center">
+                    {errors.error && <Alert severity="error" className="mt-1">{errors.error}</Alert>}
+                    <TextField required 
+                        id="email"  
+                        name="email" 
+                        label="Email" 
+                        value={values.email} 
+                        onChange={handleChange}
+                        error={!!errors.email}
+                        helperText={errors.email}
+                        />
+                    
+                    {isLoading ?   <CircularProgress />  : 
+                    <Button variant="contained" className={buttonStyle.login} type="submit">
+                            Submit
+                    </Button>}
+                </Box>
+            </form>
+        </Grid>
+    </Grid>
       )
 }
 

@@ -20,7 +20,6 @@ const Cart = function (){
 
     const auth = useSelector(state => state.auth);
     const cart = useSelector(state => state.cart);
-    console.log(cart)
     const [error, setError] = useState("");
     const dispatch = useDispatch();
     const [isCreatingOrder, setIsCreatingOrder] = useState(false);
@@ -33,7 +32,6 @@ const Cart = function (){
             "Authorization": auth.authKey,
             "Content-Type": "application/json"
         }, (response) => { 
-            console.log(response);
             dispatch({
                 type: OPEN_TOASTER,
                 payload: {
@@ -55,7 +53,6 @@ const Cart = function (){
 
             history.push("/buy");
         }, (response) => {
-            console.log(response);
             setIsCreatingOrder(false);
             setError(error);
             dispatch({
@@ -91,18 +88,18 @@ const Cart = function (){
            <Box display="flex" flexWrap="wrap" justifyContent="center">
                {cart.items.length > 0 && 
                <Box flexDirection="row" flexWrap="wrap" className="cart-items">    
-               {cart.items.map((item, index) => {
-                   return (
-                       <Item key={index} item={item}/>
-                   )
-               })}
-            </Box>}
+                {cart.items.map((item, index) => {
+                    return (
+                        <Item key={index} item={item}/>
+                    )
+                })}
+                </Box>}
                <Box className="cart-details">
                 <h4>Total : ₹  {cart.total}</h4>
                 {isCreatingOrder ?    <CircularProgress />    : <Button className={orderBtn} onClick={() => {
                     order()
                 }}>Place order</Button>}
-            </Box>
+                </Box>
            </Box>
         </div>
     )

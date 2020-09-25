@@ -30,11 +30,7 @@ export const useForm = ( initialValues ={}, validate = () => {}, sucessCB = () =
             }
             return e.target.value;
         }
-        console.log(values)
-        console.log(errors)
         const value = getValue();
-        console.log("value")
-        console.log(value)
         setErrors({
             ...errors,
             ...validate({param: name, value: value})
@@ -44,11 +40,8 @@ export const useForm = ( initialValues ={}, validate = () => {}, sucessCB = () =
 
 
     const handleSubmit = async (e, url, additionalHeaderOptions = {}, method = "POST", isMultiPartForm) => {
-            console.log(additionalHeaderOptions)
             e.preventDefault();
             setIsLoading(true);
-            console.log(values);
-            console.log("values");
             let headerOptions =  {
                 Accept: 'application/json',
                 "Content-Type": "application/json",
@@ -78,7 +71,6 @@ export const useForm = ( initialValues ={}, validate = () => {}, sucessCB = () =
             setResponseStatusCode(receivedResponse.status);
             const res = await receivedResponse.json();
             setIsLoading(false);
-            console.log(res)
             if(!res.error){
                 setResponse(res);
                 return sucessCB(res);

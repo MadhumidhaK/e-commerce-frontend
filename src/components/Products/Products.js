@@ -3,7 +3,7 @@ import React, { useEffect, useState} from 'react';
 import AddIcon from '@material-ui/icons/Add';
 
 import { url } from '../../constants/apiURL';
-import { useHistory, Link, useParams } from 'react-router-dom';
+import { useHistory, Link, useParams, Redirect } from 'react-router-dom';
 import { Alert, AlertTitle, Pagination } from '@material-ui/lab';
 import useQuery from '../../hooks/useQuery';
 import fetchData from '../../utils/fetchData';
@@ -46,7 +46,6 @@ const Products = function (){
     
     
     const successCB = (response) => {
-        console.log(response)
         setProducts(response.products)
         setPagesCount(response.pagesCount)
     }
@@ -55,8 +54,6 @@ const Products = function (){
     }
     
     const {filterBy, name} = useParams();
-    console.log(filterBy);
-    console.log(name)
 
     useEffect(() => {
         const getData = async () => {
@@ -71,13 +68,10 @@ const Products = function (){
     const handleChange = (event, value) => {
         setProducts([]);
         setIsLoading(true)
-        console.log("value")
-        console.log(value)
         history.push('?page='+ value);
       };
 
     if(error){
-        console.log(error);
         if(error.message) setError(error.message)
     return (
         <Alert severity="error" className="message-style">
@@ -85,6 +79,10 @@ const Products = function (){
             Please check again Later!
         </Alert>
     )
+    }
+
+    if(filterBy !== 'brand' || filterBy !== 'category'){
+        return <Redirect to="/404" />
     }
 
     if(isLoading){
@@ -103,7 +101,6 @@ const Products = function (){
     }
     return (
         <div style={{position: "relative"}}>
-            
                 {filterBy === 'brand' && user.isSeller && user.brand === name ?
                 <Box>
                     <div style={{position: "fixed", zIndex: "50", marginLeft: "calc(100vw - 80px)"}}>
@@ -119,7 +116,6 @@ const Products = function (){
             
             <Box flexDirection="row" flexWrap="wrap">
                     {products.length < 1 ?  <CircularProgress />  :   products.map((product, index) => {
-                        console.log(url + "/" + product.productImage)
                         return (
                             <Product key={index} product={product} filterBy={filterBy} name={name} />
                         )

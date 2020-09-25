@@ -80,8 +80,6 @@ function App() {
     useFetch(url + "/product/categories", {
       method: "GET"
     }, function(response){
-      console.log('response')
-      console.log(response)
      dispatch({
          type: SET_CATEGORIES,
           payload: {

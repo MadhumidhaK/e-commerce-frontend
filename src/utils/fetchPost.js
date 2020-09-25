@@ -1,7 +1,6 @@
 
 const fetchPost = async (url, values, additionalHeaderOptions, sucessCB, errorCB, method="POST", isMultiPartForm) => {
     try {
-        console.log(url);
         let headerOptions =  {
             Accept: 'application/json',
             "Content-Type": "application/json",
@@ -31,8 +30,6 @@ const fetchPost = async (url, values, additionalHeaderOptions, sucessCB, errorCB
         const statusCode = receivedResponse.status;
     
         const res = await receivedResponse.json();
-        console.log("res")
-        console.log(res)
         if(!res.error){
             return sucessCB(res);
         }

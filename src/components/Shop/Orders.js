@@ -38,7 +38,6 @@ const Orders = () => {
     
     
     const successCB = (response) => {
-        console.log(response)
         setOrders(response.orders);
     }
     const errorCB = (response) => {
@@ -47,7 +46,6 @@ const Orders = () => {
 
     useEffect(() => {
         const getData = async () => {
-            console.log(auth.authKey)
             await fetchData( url + "/shop/orders", {
                 "Authorization": auth.authKey,
                 "Content-Type": "application/json"
@@ -115,7 +113,7 @@ const Orders = () => {
                                     return (
                                     <div className="flex-row align-items-center">
                                         <Link to={"/product/" + item.product._id}>
-                                        <div className="order-item-img" style={{"backgroundImage":"url(" +url + "/" + item.product.productImage.replace("\\", "/") + ")"}}></div>
+                                            <div className="order-item-img" style={{"backgroundImage":"url("+ item.product.productImage + ")"}}></div>
                                         </Link>
                                         <div>
                                             <small className="m-0 p-0 display-block">
