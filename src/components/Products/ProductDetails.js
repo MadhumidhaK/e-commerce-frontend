@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     },
     price:{
         color: "crimson",
-        margin: 0
+        margin: "10px"
     }
 });
 
