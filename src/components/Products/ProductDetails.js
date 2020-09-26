@@ -29,6 +29,10 @@ const useStyles = makeStyles({
         '&:hover': {
             color: "#2121ce!important"
         }
+    },
+    price:{
+        color: "crimson",
+        margin: 0
     }
 });
 
@@ -59,6 +63,7 @@ const ProductDetails = () => {
                 <div className={classes.productImage} style={{"backgroundImage": "url(" + product.productImage + ")"}}></div>
                 <div>
                         <h3>{product.name}</h3>
+                        <h4 className={classes.price}>₹ {product.price}</h2>
                         {auth.isLoggedIn && 
                         <> 
                         {isLoading ? <CircularProgress /> : <Button size="small"  variant="contained" color="primary" className="ml-auto" onClick={() => {
