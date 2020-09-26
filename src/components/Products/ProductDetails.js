@@ -63,7 +63,7 @@ const ProductDetails = () => {
                 <div className={classes.productImage} style={{"backgroundImage": "url(" + product.productImage + ")"}}></div>
                 <div>
                         <h3>{product.name}</h3>
-                        <h4 className={classes.price}>₹ {product.price}</h2>
+                        <h4 className={classes.price}>₹ {product.price}</h4>
                         {auth.isLoggedIn && 
                         <> 
                         {isLoading ? <CircularProgress /> : <Button size="small"  variant="contained" color="primary" className="ml-auto" onClick={() => {
