@@ -94,7 +94,9 @@ export default function CategoriesNav() {
           <div className={classes.mobNav}>
           
             {categories.map((category, index) => {
-              return <NavLink to={"/category/" + category.name} className="category-nav__link" key={index}>{category.title}</NavLink>
+              return <NavLink to={"/category/" + category.name} className="category-nav__link" 
+                style={{marginTop: "2px"}}
+                key={index}>{category.title}</NavLink>
             })}
           </div>
         </Collapse>
