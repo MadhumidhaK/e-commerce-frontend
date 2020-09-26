@@ -55,7 +55,7 @@ const ProductDetails = () => {
     return (
         <Box>
             {!product ? <CircularProgress /> :  
-            <div className="product">
+            <div className="product mt-1">
                 <div className={classes.productImage} style={{"backgroundImage": "url(" + product.productImage + ")"}}></div>
                 <div>
                         <h3>{product.name}</h3>
