@@ -1,5 +1,6 @@
 import { Box, Button, CircularProgress, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { url } from '../../constants/apiURL';
@@ -22,6 +23,12 @@ const useStyles = makeStyles({
     },
     warning:{
         color: "orangered"
+    },
+    brandLink: {
+        color: "blue!important",
+        '&:hover': {
+            color: "#2121ce!important"
+        }
     }
 });
 
@@ -34,9 +41,11 @@ const ProductDetails = () => {
     const classes = useStyles();
     const auth = useSelector(state => state.auth);
     const dispatch = useDispatch();
+   
 
     const successCB = (response) => {
-        setProduct(response.product)
+        setProduct(response.product);
+
     }
     const errorCB = (response) => {
         setError(response.error);
@@ -66,6 +75,9 @@ const ProductDetails = () => {
                             <WarningRoundedIcon /> 
                             <span>  Only {product.availableQuantity} left in stock</span>
                          </div>}
+                         <div className="m-1rem">
+                            Seller: <Link to={'/brand/'+ product.seller.brand} className={classes.brandLink}>{product.seller.brandName}</Link>
+                         </div>
                         <p>{product.description}</p>
                 </div>
             </div>

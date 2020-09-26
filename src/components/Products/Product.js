@@ -119,7 +119,9 @@ const Product = ({filterBy, name, ...others}) =>{
                             <div 
                             className={classes.warning +" flex-row align-items-center ml-auto small position-absolute"}>
                             <WarningRoundedIcon /> 
-                            <span>  Only {product.availableQuantity} left in stock</span>
+                            {product.availableQuantity === 0 ? <span> Currently unavailable.</span>
+                            : 
+                            <span>  Only {product.availableQuantity} left in stock</span> }
                             </div>}
                         </Typography>
                     </CardContent>
