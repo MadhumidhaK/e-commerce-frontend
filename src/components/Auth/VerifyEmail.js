@@ -90,7 +90,7 @@ const VerifyEmail = () => {
       history.push("/");
     }
     
-    const { handleChange, handleSubmit, values, errors, isLoading } = 
+    const { handleChange, handleSubmit, values, errors, isLoading, responseStatusCode } = 
     useForm(initialValues, validate, successCB);
 
     if(auth.isLoggedIn){
