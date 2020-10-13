@@ -58,6 +58,14 @@ const Orders = () => {
     if(isLoading){
         return <CircularProgress />
     }
+
+    if(orders.length < 1){
+        return (
+            <Alert severity="error" className="message-style">
+                <AlertTitle><strong>No orders!</strong></AlertTitle>
+            </Alert>
+            )
+    }
     return (
         <List className={classes.root}>
                 {orders.map((order, index) => {
