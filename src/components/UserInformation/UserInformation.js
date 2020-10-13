@@ -111,6 +111,7 @@ export default function UserInformation() {
                         <FormControlLabel value={true} control={<Radio />} label="Yes" />
                         <FormControlLabel value={false} control={<Radio />} label="No" />
                     </RadioGroup>
+                    <small style={{color: "red"}}>This action can't be reversed.</small>
                     </div>}
                     {values.isSeller && <TextField 
                         label="Brand Name" 
