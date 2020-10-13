@@ -111,7 +111,7 @@ export default function UserInformation() {
                         <FormControlLabel value={true} control={<Radio />} label="Yes" />
                         <FormControlLabel value={false} control={<Radio />} label="No" />
                     </RadioGroup>
-                    <small className="m-2" style={{color: "red"}}>Registering as seller can't be reversed.</small>
+                    {values.isSeller && <small className="m-2" style={{color: "red"}}>Registering as seller can't be reversed.</small>}
                     </div>}
                     {values.isSeller && <TextField 
                         label="Brand Name" 
