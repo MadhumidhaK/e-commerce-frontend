@@ -73,7 +73,7 @@ const Login = () => {
       return errors;
     }
 
-    const { handleChange, handleSubmit, values, errors, isLoading } = 
+    const { handleChange, handleSubmit, values, errors, isLoading,responseStatusCode } = 
                         useForm(initialValues, validate, successCB);
 
     if(auth.isLoggedIn){
@@ -86,7 +86,10 @@ const Login = () => {
             handleSubmit(e,url + "/user/login");
             }}>
               <Box display="flex" flexDirection="column" alignItems="center">
-                  {errors.error && <Alert severity="error" className="mt-1">{errors.error}</Alert>}
+                  {errors.error && <Alert severity="error" className="mt-1">{responseStatusCode === 406? 
+                      <p>{errors.error}{" "}Click <span onClick={() => history.push("/request/verify")} className="small-link">
+                        here</span> to request a new Link.</p>
+                  :errors.error}</Alert>}
                   <TextField required 
                     id="email"  
                     name="email" 
