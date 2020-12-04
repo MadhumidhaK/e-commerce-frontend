@@ -20,7 +20,8 @@ const useStyles = makeStyles((theme) => ({
         margin: 0
     },
     qty: {
-        height: "40px!important"
+        height: "40px!important",
+        marginRight: "5px"
       }
 }));
 
